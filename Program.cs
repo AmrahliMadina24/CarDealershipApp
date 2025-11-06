@@ -10,6 +10,7 @@ namespace CarDealershipApp
     {
         public static void Main(string[] args) 
         {
+            //MenuUtil.FirstMenu();
             Console.WriteLine("Salam");
         }
     }
