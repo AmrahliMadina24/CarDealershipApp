@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CarDealershipApp.entity
 {
-    public class Car
+    internal class Car
     {
         private static int idCounter = 1;
 
@@ -36,8 +36,5 @@ namespace CarDealershipApp.entity
         {
             Console.WriteLine($"Id: {Id} , Brand: {Brand} , Model: {Model} , Year: {Year} , CostPrice: {CostPrice} , SalePrice: {SalePrice} , isRented: {IsRented}");
         }
-
-        
-
     }
 }
