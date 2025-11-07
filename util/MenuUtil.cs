@@ -235,7 +235,11 @@ internal class MenuUtil
         while (!back)
         {
             Console.WriteLine("------------- Bank Menu -------------");
+<<<<<<< HEAD
             Console.WriteLine("1. Bank hesabım (balansı göster)");
+=======
+            Console.WriteLine("1. Bank hesabım (balansı goster)");
+>>>>>>> 851e05f947fbedfe3c8cc4bd568d776e9d974dea
             Console.WriteLine("2. Emeliyyat tarixçesi (satışlar, icare gelirleri ve s.)");
             Console.WriteLine("0. Geri");
             Console.Write("Seçiminizi edin: ");
@@ -251,7 +255,10 @@ internal class MenuUtil
                     break;
 
                 case 2:
-                    //Emeliyyatlarin siyasi
+                    //Emeliyyatlarin siyahisi
+                    Console.WriteLine();
+                    Console.WriteLine("Emeliyyat tarixçesi:");
+                    bank.ShowHistory();
                     break;
 
                 case 0:
