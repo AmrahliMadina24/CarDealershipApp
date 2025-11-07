@@ -6,7 +6,7 @@ using CarDealershipApp.servicess.impl;
 namespace CarDealershipApp.util;
 internal class MenuUtil
 {
-    public static void MenuStart(CarServiceImpl carServiceImpl, Bank bank)
+    public static void MenuStart(CarServiceImpl carServiceImpl, Bank bank , RentCarImpl rentCarImpl)
     {
         bool stop = false;
 
@@ -29,7 +29,7 @@ internal class MenuUtil
 
                     break;
                 case 2:
-                    RentCarMenu();
+                    RentCarMenu(rentCarImpl , bank);
                     break;
                 case 3:
                     BankMenu();
@@ -146,6 +146,7 @@ internal class MenuUtil
             Console.WriteLine("3. Maşın Sil ");
             Console.WriteLine("4. Maşınları Filtrlə");
             Console.WriteLine("5. Maşınları Çeşidlə");
+            Console.WriteLine("6. Maşınl kiraye ver");
             Console.WriteLine("0. Geri");
             Console.Write("Seçiminizi edin: ");
 

@@ -73,5 +73,19 @@ namespace CarDealershipApp.servicess.impl
 
             Console.WriteLine($"Maşın icarəyə verildi: {car.Brand} {car.Model}. Icare haqqı: {rentPrice}. Yeni balans: {bank.Balance}");
         }
+
+        public void RemoveCar(int car_id)
+        {
+            Car car = rentCars.FirstOrDefault(c => c.Id == car_id);
+            if (car != null)
+            {
+                rentCars.Remove(car);
+                Console.WriteLine($"Masin ugurla silindi: {car.Brand} , {car.Model}");
+            }
+            else
+            {
+                Console.WriteLine("Id ye uygun masin tapilmadi");
+            }
+        }
     }
 }

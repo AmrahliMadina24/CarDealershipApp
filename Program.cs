@@ -15,8 +15,9 @@ namespace CarDealershipApp
         {
 
             CarServiceImpl serviceImpl = new CarServiceImpl();
+            RentCarImpl rentCarImpl = new RentCarImpl();
             Bank bank = new Bank(10000);
-            MenuUtil.MenuStart(serviceImpl, bank);
+            MenuUtil.MenuStart(serviceImpl, bank , rentCarImpl);
         }
     }
 }
