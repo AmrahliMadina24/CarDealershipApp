@@ -227,37 +227,54 @@ internal class MenuUtil
         }
     }
 
-    public static  void BankMenu()
+    public static void BankMenu(Bank bank)
     {
         bool back = false;
+
         while (!back)
         {
-            Console.WriteLine("-------------Bank Menu-------------");
-            Console.WriteLine("1. Bank Accountum (Balansi goster)");
-            Console.WriteLine("2. Emeliyatlarim  (satislar, icare gelirleri, tarixce ve s.)");
-            Console.WriteLine("3. Cixis");
-            Console.Write("Secimizini edin: ");
+            Console.WriteLine("------------- Bank Menu -------------");
+            Console.WriteLine("1. Bank hesabım (balansı göster)");
+            Console.WriteLine("2. Eməliyyat tarixçəsi (satışlar, icare gelirleri ve s.)");
+            Console.WriteLine("0. Geri");
+            Console.Write("Seçiminizi edin: ");
+
             int secim = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine();
+
             switch (secim)
             {
                 case 1:
-                    Console.WriteLine("Balans gösterilir...");
-                    // ShowBalance()
+                    Console.WriteLine(" Mövcud balans:");
+                    Console.WriteLine($"Balans: {bank.Balance} AZN");
                     break;
+
                 case 2:
-                    Console.WriteLine("Emeliyyat tarixçesi gösterilir...");
-                    // ShowTransactions()
+                    Console.WriteLine(" Eməliyyat tarixçesi:");
+                    List<string> transactions = bank.GetTransactions();
+                    if (transactions.Count == 0)
+                    {
+                        Console.WriteLine("Hele heç bir emeliyyat yoxdur.");
+                    }
+                    else
+                    {
+                        foreach (var item in transactions)
+                        {
+                            Console.WriteLine($"- {item}");
+                        }
+                    }
                     break;
-                case 3:
+
+                case 0:
                     Console.WriteLine("Esas menyuya qayıdılır...");
                     back = true;
                     break;
+
                 default:
-                    Console.WriteLine("Yanlış seçim!");
+                    Console.WriteLine(" Yanlış seçim etdiniz!");
                     break;
             }
 
             Console.WriteLine();
         }
     }
-}
