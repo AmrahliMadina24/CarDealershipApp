@@ -10,7 +10,7 @@ namespace CarDealershipApp.servicess
     internal interface ICarService
     {
         void AddCar(Car car , Bank bank);
-        void RemoveCar(Car car);
+        void RemoveCar(int carId);
         List<Car> GetAllCars();
         List<Car> FilterCar(int year);
 
