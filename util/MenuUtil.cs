@@ -54,11 +54,11 @@ internal class MenuUtil
         while (!back)
         {
             Console.WriteLine("---------- Car Sale Menu ----------");
-            Console.WriteLine("1. Maşın elavə et");
+            Console.WriteLine("1. Maşın elave et");
             Console.WriteLine("2. Maşınlara Bax");
             Console.WriteLine("3. Maşın Sil ");
-            Console.WriteLine("4. Maşınları Filtrlə");
-            Console.WriteLine("5. Maşınları Çeşidlə");
+            Console.WriteLine("4. Maşınları Filtrle");
+            Console.WriteLine("5. Maşınları Çeşidle");
             Console.WriteLine("0. Geri");
             Console.Write("Seçiminizi edin: ");
             int secim = Convert.ToInt32(Console.ReadLine());
@@ -91,7 +91,7 @@ internal class MenuUtil
                     // butun masinlar gosterilir
                     break;
                 case 3:
-                    Console.Write("SIlmke istediyz masn id dagil et: ");
+                    Console.Write("Silmek istediyz avtomobil id dagil et: ");
                     int removeId = Convert.ToInt32(Console.ReadLine());
                     carService.RemoveCar(removeId);
                     break;
@@ -117,14 +117,14 @@ internal class MenuUtil
                     }
                     break;
                 case 6:
-                    Console.WriteLine("Maşın icarəyə verilir...");
+                    Console.WriteLine("Maşın icarəye verilir...");
                     Console.WriteLine("Qaydalar:");
-                    Console.WriteLine("- İcarəyə verilən maşın 'rented' statusu alır.");
-                    Console.WriteLine("- Statusu 'rented' olan maşın yenidən icarəyə verilə bilməz.");
-                    Console.WriteLine("- İcarə məbləği avtomobilin dəyərinə görə müəyyən edilir.");
+                    Console.WriteLine("- İcareye verilen maşın 'rented' statusu alır.");
+                    Console.WriteLine("- Statusu 'rented' olan maşın yeniden icareye verile bilmez.");
+                    Console.WriteLine("- İcare mebleği avtomobilin deyerinə göre müeyyən edilir.");
                     break;
                 case 0:
-                    Console.WriteLine("Əsas menyuya qayıdılır...");
+                    Console.WriteLine("Esas menyuya qayıdılır...");
                     back = true;
                     break;
                 default:
@@ -141,11 +141,11 @@ internal class MenuUtil
         while (!back)
         {
             Console.WriteLine("---------- Rent a Car Menu ----------");
-            Console.WriteLine("1. Maşın elavə et");
+            Console.WriteLine("1. Maşın elave et");
             Console.WriteLine("2. Maşınlara Bax");
             Console.WriteLine("3. Maşın Sil ");
-            Console.WriteLine("4. Maşınları Filtrlə");
-            Console.WriteLine("5. Maşınları Çeşidlə");
+            Console.WriteLine("4. Maşınları Filtrle");
+            Console.WriteLine("5. Maşınları Çeşidle");
             Console.WriteLine("6. Maşınl kiraye ver");
             Console.WriteLine("0. Geri");
             Console.Write("Seçiminizi edin: ");
@@ -235,8 +235,12 @@ internal class MenuUtil
         while (!back)
         {
             Console.WriteLine("------------- Bank Menu -------------");
+<<<<<<< HEAD
             Console.WriteLine("1. Bank hesabım (balansı göster)");
-            Console.WriteLine("2. Eməliyyat tarixçəsi (satışlar, icare gelirleri ve s.)");
+=======
+            Console.WriteLine("1. Bank hesabım (balansı goster)");
+>>>>>>> 851e05f947fbedfe3c8cc4bd568d776e9d974dea
+            Console.WriteLine("2. Emeliyyat tarixçesi (satışlar, icare gelirleri ve s.)");
             Console.WriteLine("0. Geri");
             Console.Write("Seçiminizi edin: ");
 
@@ -251,7 +255,10 @@ internal class MenuUtil
                     break;
 
                 case 2:
-                    //Emeliyyatlarin siyasi
+                    //Emeliyyatlarin siyahisi
+                    Console.WriteLine();
+                    Console.WriteLine("Emeliyyat tarixçesi:");
+                    bank.ShowHistory();
                     break;
 
                 case 0:
