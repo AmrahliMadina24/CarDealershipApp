@@ -1,4 +1,6 @@
-﻿using CarDealershipApp.util;
+﻿using CarDealershipApp.entity;
+using CarDealershipApp.servicess.impl;
+using CarDealershipApp.util;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +13,10 @@ namespace CarDealershipApp
     {
         public static void Main(string[] args) 
         {
-            MenuUtil.MenuStart();
+
+            CarServiceImpl serviceImpl = new CarServiceImpl();
+            Bank bank = new Bank(10000);
+            MenuUtil.MenuStart(serviceImpl, bank);
         }
     }
 }

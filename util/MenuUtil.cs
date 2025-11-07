@@ -1,10 +1,12 @@
-﻿using System;
-using System.Security.Cryptography.X509Certificates;
+﻿using CarDealershipApp.entity;
+using CarDealershipApp.servicess;
+using CarDealershipApp.servicess.impl;
+
 
 namespace CarDealershipApp.util;
-public class MenuUtil
+internal class MenuUtil
 {
-    public static void MenuStart()
+    public static void MenuStart(CarServiceImpl carServiceImpl, Bank bank)
     {
         bool stop = false;
 
@@ -23,7 +25,7 @@ public class MenuUtil
             switch (choice)
             {
                 case 1:
-                    CarSaleMenu();
+                    CarSaleMenu(carServiceImpl , bank);
 
                     break;
                 case 2:
@@ -45,7 +47,7 @@ public class MenuUtil
         }
     }
 
-    public static void CarSaleMenu()
+    public static void CarSaleMenu(CarServiceImpl carService, Bank bank)
     {
         //Tuncay yaz
         bool back = false;
@@ -57,31 +59,62 @@ public class MenuUtil
             Console.WriteLine("3. Maşın Sil ");
             Console.WriteLine("4. Maşınları Filtrlə");
             Console.WriteLine("5. Maşınları Çeşidlə");
-            Console.WriteLine("6. Maşın İcarəyə Ver");
             Console.WriteLine("0. Geri");
             Console.Write("Seçiminizi edin: ");
             int secim = Convert.ToInt32(Console.ReadLine());
             switch (secim)
             {
                 case 1:
-                    Console.WriteLine("Yeni masin elave etmek");
-                    //masin elave etme metodu cagirilir
+                    Console.Write("Brand: ");
+                    string brand = Console.ReadLine();
+                    Console.Write("Model: ");
+                    string model = Console.ReadLine();
+                    Console.Write("Year: ");
+                    int year = int.Parse(Console.ReadLine());
+                    Console.Write("CostPrice: ");
+                    double cost = double.Parse(Console.ReadLine());
+                    Console.Write("SalePrice: ");
+                    double sale = double.Parse(Console.ReadLine());
+
+                    Car newCar = new Car(brand, model, year, cost, sale, false);
+                    carService.AddCar(newCar, bank);
+
                     break;
                 case 2:
-                    Console.WriteLine("Butun masinlar gosterilir");
+                    Console.WriteLine("Bütün maşınlar:");
+                    List<Car> carList = carService.GetAllCars();
+                    foreach (Car car in carList)
+                    {
+                        car.ShowInfo();
+                    }
+                    break;
                     // butun masinlar gosterilir
                     break;
                 case 3:
-                    Console.WriteLine("Masin silinir...");
+                    Console.Write("SIlmke istediyz masn id dagil et: ");
+                    int removeId = Convert.ToInt32(Console.ReadLine());
+                    carService.RemoveCar(removeId);
+                    break;
                     //masin silme funksiyasi
                     break;
                 case 4:
-                    Console.WriteLine("Masinlari filtrlemek");
+                    Console.Write("Year dagl et: ");
+                    int finYear = Convert.ToInt32(Console.ReadLine());
+                    List<Car> filterdCar = carService.FilterCar(finYear);
+                    foreach (Car car in filterdCar)
+                    {
+                        car.ShowInfo();
+                    }
+
                     //filtr funksiyasi
                     break;
                 case 5:
-                    Console.WriteLine("Cesidleme emeliyyati");
-                    //sort funksiyasi
+                    Console.WriteLine("Masinlar qiymete gore siralanib");
+                    List<Car> filterCar = carService.SortCars();
+                    foreach (var item in filterCar)
+                    {
+                        item.ShowInfo();   
+                    }
                     break;
                 case 6:
                     Console.WriteLine("Maşın icarəyə verilir...");
@@ -101,7 +134,7 @@ public class MenuUtil
             Console.WriteLine();
         }
     }
-    public static void RentCarMenu()
+    public static  void RentCarMenu()
     {
         bool back = false;
 
@@ -157,7 +190,7 @@ public class MenuUtil
             }
         }
     }
-    public static void BankMenu()
+    public static  void BankMenu()
     {
         bool back = false;
         while (!back)
