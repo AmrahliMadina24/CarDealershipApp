@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CarDealershipApp.util;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,8 +11,7 @@ namespace CarDealershipApp
     {
         public static void Main(string[] args) 
         {
-            //MenuUtil.FirstMenu();
-            Console.WriteLine("Salam");
+            MenuUtil.MenuStart();
         }
     }
 }
