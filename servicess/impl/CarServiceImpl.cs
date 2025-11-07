@@ -15,6 +15,7 @@ namespace CarDealershipApp.servicess.impl
             if (bank.Balance >= car.CostPrice)
             {
                 bank.Balance -= car.CostPrice;
+                bank.TransactionList.Add($"{DateTime.Now}: -{car.CostPrice} AZN cıxıldı. Yeni balans: {bank.Balance} AZN");
                 cars.Add(car);
                 Console.WriteLine($"Masin ugurla elve olundu: {car.Brand} , {car.Model} , Hal hazirki bank balanci: {bank.Balance}");
             }else
