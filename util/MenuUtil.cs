@@ -6,7 +6,7 @@ using CarDealershipApp.servicess.impl;
 namespace CarDealershipApp.util;
 internal class MenuUtil
 {
-    public static void MenuStart(CarServiceImpl carServiceImpl, Bank bank , RentCarImpl rentCarImpl)
+    public static void MenuStart(CarServiceImpl carServiceImpl, Bank bank, RentCarImpl rentCarImpl)
     {
         bool stop = false;
 
@@ -25,14 +25,14 @@ internal class MenuUtil
             switch (choice)
             {
                 case 1:
-                    CarSaleMenu(carServiceImpl , bank);
+                    CarSaleMenu(carServiceImpl, bank);
 
                     break;
                 case 2:
-                    RentCarMenu(rentCarImpl , bank);
+                    RentCarMenu(rentCarImpl, bank);
                     break;
                 case 3:
-                    BankMenu();
+                    BankMenu(bank);
                     break;
                 case 4:
                     Console.WriteLine("EXIT....");
@@ -113,7 +113,7 @@ internal class MenuUtil
                     List<Car> filterCar = carService.SortCars();
                     foreach (var item in filterCar)
                     {
-                        item.ShowInfo();   
+                        item.ShowInfo();
                     }
                     break;
                 case 6:
@@ -251,19 +251,7 @@ internal class MenuUtil
                     break;
 
                 case 2:
-                    Console.WriteLine(" Eməliyyat tarixçesi:");
-                    List<string> transactions = bank.GetTransactions();
-                    if (transactions.Count == 0)
-                    {
-                        Console.WriteLine("Hele heç bir emeliyyat yoxdur.");
-                    }
-                    else
-                    {
-                        foreach (var item in transactions)
-                        {
-                            Console.WriteLine($"- {item}");
-                        }
-                    }
+                    //Emeliyyatlarin siyasi
                     break;
 
                 case 0:
@@ -279,3 +267,4 @@ internal class MenuUtil
             Console.WriteLine();
         }
     }
+}
