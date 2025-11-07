@@ -134,62 +134,99 @@ internal class MenuUtil
             Console.WriteLine();
         }
     }
-    public static  void RentCarMenu()
+    public static void RentCarMenu(RentCarImpl rentService, Bank bank)
     {
         bool back = false;
 
         while (!back)
         {
             Console.WriteLine("---------- Rent a Car Menu ----------");
-            Console.WriteLine("1. Maşın elave et");
+            Console.WriteLine("1. Maşın elavə et");
             Console.WriteLine("2. Maşınlara Bax");
-            Console.WriteLine("3. Maşın Sil");
-            Console.WriteLine("4. Maşınları Filtrle");
-            Console.WriteLine("5. Maşınları Çeşidle");
-            Console.WriteLine("6. Maşın İcareye Ver");
+            Console.WriteLine("3. Maşın Sil ");
+            Console.WriteLine("4. Maşınları Filtrlə");
+            Console.WriteLine("5. Maşınları Çeşidlə");
             Console.WriteLine("0. Geri");
             Console.Write("Seçiminizi edin: ");
 
             int secim = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine();
+
             switch (secim)
             {
                 case 1:
-                    Console.WriteLine("Yeni maşın əlavə edilir...");
-                    // AddRentCar() metodu çağırılacaq
+                    Console.Write("Brand: ");
+                    string brand = Console.ReadLine();
+                    Console.Write("Model: ");
+                    string model = Console.ReadLine();
+                    Console.Write("Year: ");
+                    int year = int.Parse(Console.ReadLine());
+                    Console.Write("CostPrice: ");
+                    double cost = double.Parse(Console.ReadLine());
+                    Console.Write("RentPrice (gündelik): ");
+                    double rentPrice = double.Parse(Console.ReadLine());
+
+                    Car newCar = new Car(brand, model, year, cost, rentPrice, false);
+                    rentService.AddCar(newCar, bank);
+
+                    Console.WriteLine(" Maşın uğurla elave olundu!");
                     break;
+
                 case 2:
-                    Console.WriteLine("Bütün icare maşınları gösterilir...");
-                    // ShowRentCars()
+                    Console.WriteLine("Bütün icare maşınları:");
+                    List<Car> rentCars = rentService.GetAllCars();
+                    foreach (var car in rentCars)
+                    {
+                        car.ShowInfo();
+                    }
                     break;
+
                 case 3:
-                    Console.WriteLine("Maşın silinir...");
-                    // DeleteRentCar()
+                    Console.Write("Silinecek maşının ID-sini daxil edin: ");
+                    int removeId = Convert.ToInt32(Console.ReadLine());
+                    rentService.RemoveCar(removeId);
+                    Console.WriteLine(" Maşın uğurla silindi!");
                     break;
+
                 case 4:
-                    Console.WriteLine("Filtrleme emeliyyatı...");
-                    // FilterRentCars()
+                    Console.Write("İl daxil edin (filtrlemek üçün): ");
+                    int findYear = Convert.ToInt32(Console.ReadLine());
+                    List<Car> filteredCars = rentService.FilterCar(findYear);
+                    foreach (var car in filteredCars)
+                    {
+                        car.ShowInfo();
+                    }
                     break;
+
                 case 5:
-                    Console.WriteLine("Çeşidleme emeliyyatı...");
-                    // SortRentCars()
+                    Console.WriteLine("Maşınlar qiymete göre çeşidlenir:");
+                    List<Car> sortedCars = rentService.SortCars();
+                    foreach (var car in sortedCars)
+                    {
+                        car.ShowInfo();
+                    }
                     break;
+
                 case 6:
-                    Console.WriteLine("İcare emeliyyatı...");
-                    Console.WriteLine("- İcarəye verilən maşın 'rented' statusu alır.");
-                    Console.WriteLine("- Statusu 'rented' olan maşın yeniden icareye verile bilmez.");
-                    Console.WriteLine("- İcare mebleği avtomobilin deyerine göre müeyyen edilir.");
-                    // RentCar()
+                    Console.Write("Icarəyə veriləcək maşının ID-sini daxil edin: ");
+                    int rentId = Convert.ToInt32(Console.ReadLine());
+                    rentService.RentCar(rentId, bank);
                     break;
+
                 case 0:
                     Console.WriteLine("Esas menyuya qayıdılır...");
                     back = true;
                     break;
+
                 default:
-                    Console.WriteLine("Yanlış seçim!");
+                    Console.WriteLine(" Yanlış seçim etdiniz!");
                     break;
             }
+
+            Console.WriteLine();
         }
     }
+
     public static  void BankMenu()
     {
         bool back = false;

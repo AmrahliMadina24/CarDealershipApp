@@ -64,13 +64,12 @@ namespace CarDealershipApp.servicess.impl
 
             if (car.IsRented)
             {
-                Console.WriteLine("Bu maşın artıq icarədədir.");
+                Console.WriteLine("Bu maşın artıq icarədədir."); 
                 return;
             }
-            double rentPrice = car.SalePrice * 0.1;
-
-            car.IsRented = true;
-            bank.Balance += rentPrice;
+            double rentPrice = car.SalePrice * 0.1; 
+            car.IsRented = true; 
+            bank.Balance += rentPrice; 
 
             Console.WriteLine($"Maşın icarəyə verildi: {car.Brand} {car.Model}. Icare haqqı: {rentPrice}. Yeni balans: {bank.Balance}");
         }
