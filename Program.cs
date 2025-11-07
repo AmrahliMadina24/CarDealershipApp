@@ -13,7 +13,6 @@ namespace CarDealershipApp
     {
         public static void Main(string[] args) 
         {
-
             CarServiceImpl serviceImpl = new CarServiceImpl();
             RentCarImpl rentCarImpl = new RentCarImpl();
             Bank bank = new Bank(10000);
